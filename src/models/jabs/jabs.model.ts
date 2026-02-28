@@ -21,6 +21,11 @@ export const JabSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+    message: { 
+      type: String, 
+      required: false,
+      trim: true,
+    },
   },
   { timestamps: true }
 );

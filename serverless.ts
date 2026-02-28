@@ -8,7 +8,7 @@ export const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     stage: 'v1',
-    runtime: 'nodejs20.x',
+    runtime: 'nodejs24.x',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -45,7 +45,7 @@ export const serverlessConfiguration: AWS = {
       minify: false,
       sourcemap: true,
       exclude: ['aws-sdk'],
-      target: 'node20',
+      target: 'node24',
       define: { 'require.resolve': undefined },
       platform: 'node',
       concurrency: 10,

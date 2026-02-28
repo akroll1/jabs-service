@@ -36,33 +36,31 @@ const jabsHandler = async (
   const secretIsValid = validateCloudFrontSecret(event?.headers, CLOUDFRONT_SECRET);
 
   if (!secretIsValid) {
-      const ip =
-        ('identity' in event.requestContext
-          ? event.requestContext.identity?.sourceIp
-          : event.requestContext?.http?.sourceIp);
-      console.warn(`🛑 Blocked Spoofed Request. IP: ${ip}`);
+    const ip =
+      ('identity' in event.requestContext
+        ? event.requestContext.identity?.sourceIp
+        : event.requestContext?.http?.sourceIp);
+    console.warn(`🛑 Blocked Spoofed Request. IP: ${ip}`);
 
-      return formatJSONResponse({
-        statusCode: 403,
-        origin,
-        message: `Forbidden: Invalid Origin Secret`,
-      }) as APIGatewayProxyResult;
+    return formatJSONResponse({
+      statusCode: 403,
+      origin,
+      message: `Forbidden: Invalid Origin Secret`,
+    }) as APIGatewayProxyResult;
   }
-
   // ============================================================
   // 2. VALIDATE PATH PARAMETER & BODY
   // ============================================================
-  const type = event.pathParameters?.type as string | undefined;
+  const body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
 
-  if (!type || !validJabTypes.has(type as JabType)) {
+  if (!body) {
     return formatJSONResponse({
       statusCode: 400,
       origin,
-      message: `Invalid jab type. Must be one of: ${[...validJabTypes].join(', ')}`,
+      message: `Missing request body`,
     }) as APIGatewayProxyResult;
   }
 
-  const body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
   const email = body?.email as string | undefined;
 
   if (!email) {
@@ -78,7 +76,7 @@ const jabsHandler = async (
   // ============================================================
   try {
     await connectToAtlas();
-    const created = await jabsService.subscribeToType(email, type as JabType);
+    const created = await jabsService.subscribeToType(body);
 
     if (!created) {
       return formatJSONResponse({

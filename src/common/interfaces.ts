@@ -4,6 +4,7 @@ export interface Jab {
   email: string;
   type: JabType;
   canContact: boolean;
+  message: string;
   createdAt: Date;
   updatedAt: Date;
 }
