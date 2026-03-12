@@ -7,4 +7,5 @@ export interface Jab {
   message: string;
   createdAt: Date;
   updatedAt: Date;
+  unsubscribedAt?: Date | null;
 }

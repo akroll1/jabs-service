@@ -1,5 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-import { jabsService } from '@/functions/jabs-service';
+import { jabsSubscribe, jabsUnsubscribe } from '@/functions/jabs-service';
 
 export const serverlessConfiguration: AWS = {
   service: 'jabs-service',
@@ -37,7 +37,7 @@ export const serverlessConfiguration: AWS = {
     ],
   },
   // import the function via paths
-  functions: { jabsService },
+  functions: { jabsSubscribe, jabsUnsubscribe },
   package: { individually: true },
   custom: {
     esbuild: {

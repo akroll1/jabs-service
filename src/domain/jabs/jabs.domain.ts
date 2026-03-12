@@ -1,5 +1,6 @@
 import {
     IsBoolean,
+  IsDate,
   IsEmail,
   IsEnum,
   IsOptional,
@@ -10,7 +11,7 @@ import { JabType } from "src/common/enums";
 
 export type IJab = Pick<
   Jab,
-  "email" | "type" | "canContact" | "createdAt" | "updatedAt"
+  "email" | "type" | "canContact" | "createdAt" | "updatedAt" | "unsubscribedAt"
 >;
 
 export class Jab implements IJab {
@@ -59,6 +60,10 @@ export class Jab implements IJab {
     @IsString()
     @IsOptional()
     updatedAt?: string;
+
+    @IsDate()
+    @IsOptional()
+    unsubscribedAt?: Date | null;
 
     async validateOrThrow() {
         const errors = await validate(this);

@@ -1,18 +1,36 @@
 import { handlerPath } from 'src/libs/handler-resolver';
 
-export const jabsService = {
-  handler: `${handlerPath(__dirname)}/handler.main`,
+export const jabsSubscribe = {
+  handler: `${handlerPath(__dirname)}/handler.subscribe`,
   events: [
     {
       http: {
         method: 'put',
-        path: 'jabs/{type}',
+        path: 'jabs/subscribe',
       },
     },
     {
       http: {
         method: 'options',
-        path: 'jabs/{type}',
+        path: 'jabs/subscribe',
+      },
+    },
+  ],
+};
+
+export const jabsUnsubscribe = {
+  handler: `${handlerPath(__dirname)}/handler.unsubscribe`,
+  events: [
+    {
+      http: {
+        method: 'put',
+        path: 'jabs/unsubscribe',
+      },
+    },
+    {
+      http: {
+        method: 'options',
+        path: 'jabs/unsubscribe',
       },
     },
   ],

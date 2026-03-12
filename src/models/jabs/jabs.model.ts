@@ -21,10 +21,15 @@ export const JabSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
-    message: { 
-      type: String, 
+    message: {
+      type: String,
       required: false,
       trim: true,
+    },
+    unsubscribedAt: {
+      type: Date,
+      required: false,
+      default: null,
     },
   },
   { timestamps: true }

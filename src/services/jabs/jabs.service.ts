@@ -1,42 +1,47 @@
 
-import { JabType, UnsubscribeFromSourceOptions } from "@/common";
+import { JabType } from "@/common";
 import { Jab } from "@/common/interfaces";
 import { JabsMongo } from "src/models/jabs";
 
 export class JabsService {
-    // async sendWelcomeEmail(email: string): Promise<void> {
-    //     await sendWelcomeEmailSES(email);
-    // }
-
     async subscribeToType(options: Partial<Jab>): Promise<boolean> {
         const subscription = await JabsMongo.findOneAndUpdate(
-        {
-            email: options.email,
-            type: options.type,
-        },
-        {
-            ...options,
-        },
-        {
-            upsert: true,
-            new: true,
-        }
+            {
+                email: options.email,
+                type: options.type,
+            },
+            {
+                ...options,
+                canContact: true,
+                unsubscribedAt: null,
+            },
+            {
+                upsert: true,
+                new: true,
+            }
         );
-        if (subscription) {
-        return true;
-        }
-        return false;
+
+        return !!subscription;
     }
 
-    async unsubscribeFromSource(
-        options: UnsubscribeFromSourceOptions
-    ): Promise<void> {
-        const { id, source } = options;
-        // Analytics will be added here later for tracking unsubscriptions
-        if(source === JabType.WELCOME) {
-            await JabsMongo.findOneAndDelete({ email: id, source });
+    async unsubscribeFromType(email: string, type: JabType): Promise<void> {
+        if (type === JabType.ALL) {
+            await JabsMongo.updateMany(
+                { email },
+                {
+                    canContact: false,
+                    unsubscribedAt: new Date(),
+                }
+            );
             return;
         }
-        return;
+
+        await JabsMongo.findOneAndUpdate(
+            { email, type },
+            {
+                canContact: false,
+                unsubscribedAt: new Date(),
+            }
+        );
     }
 }
