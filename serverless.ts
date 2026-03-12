@@ -24,6 +24,7 @@ export const serverlessConfiguration: AWS = {
       FSL_PROD_MONGODB_URI: "${file(.env.json):FSL_PROD_MONGODB_URI}",
       CLOUDFRONT_SECRET: "${file(.env.json):CLOUDFRONT_SECRET}",
       SES_EMAIL_SOURCE: "${file(.env.json):SES_EMAIL_SOURCE}",
+      UNSUBSCRIBE_SECRET: "${file(.env.json):UNSUBSCRIBE_SECRET}",
     },
     iamRoleStatements: [
       {

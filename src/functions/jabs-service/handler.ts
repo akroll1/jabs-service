@@ -8,19 +8,19 @@ import { validateCloudFrontSecret } from './helpers';
 import { connectToAtlas } from 'src/libs/connect-to-atlas';
 import { JabType } from '@/common';
 import { JabsService } from '@/services/jabs/jabs.service';
+import { verifyUnsubscribeToken } from '@/libs/unsubscribe-token';
 
-const { CLOUDFRONT_SECRET } = Config;
+const { CLOUDFRONT_SECRET, UNSUBSCRIBE_SECRET } = Config;
 const jabsService = new JabsService();
 const validJabTypes = new Set(Object.values(JabType));
 
 type LambdaEvent = AWSLambda.APIGatewayProxyEvent | AWSLambda.APIGatewayProxyEventV2;
 
 // ============================================================
-// SHARED: Validates CloudFront secret, parses body, checks email & type.
-// Returns the parsed fields or a formatted error response.
+// SHARED: Validates CloudFront secret and parses body.
 // ============================================================
-function validateRequest(event: LambdaEvent):
-  | { ok: true; origin: string; email: string; type: JabType }
+function validateCloudFront(event: LambdaEvent):
+  | { ok: true; origin: string; body: Record<string, unknown> }
   | { ok: false; response: APIGatewayProxyResult }
 {
   const origin = event.headers?.origin || event.headers?.Origin || '';
@@ -39,16 +39,11 @@ function validateRequest(event: LambdaEvent):
   }
 
   const body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
+  if (!body) {
+    return { ok: false, response: formatJSONResponse({ statusCode: 400, origin, message: 'Missing request body' }) as APIGatewayProxyResult };
+  }
 
-  if (!body) return { ok: false, response: formatJSONResponse({ statusCode: 400, origin, message: 'Missing request body' }) as APIGatewayProxyResult };
-
-  const email = body?.email as string | undefined;
-  if (!email) return { ok: false, response: formatJSONResponse({ statusCode: 400, origin, message: 'Missing required field: email' }) as APIGatewayProxyResult };
-
-  const type = body?.type as JabType | undefined;
-  if (!type || !validJabTypes.has(type)) return { ok: false, response: formatJSONResponse({ statusCode: 400, origin, message: 'Missing or invalid field: type' }) as APIGatewayProxyResult };
-
-  return { ok: true, origin, email, type };
+  return { ok: true, origin, body };
 }
 
 // ============================================================
@@ -60,14 +55,19 @@ const subscribeHandler = async (event: LambdaEvent): Promise<APIGatewayProxyResu
   const httpMethod = 'httpMethod' in event ? event.httpMethod : event.requestContext?.http?.method;
   if (httpMethod === 'OPTIONS') return formatJSONResponse({ statusCode: 200, origin, message: 'OK' }) as APIGatewayProxyResult;
 
-  const validated = validateRequest(event);
+  const validated = validateCloudFront(event);
   if (!validated.ok) return validated.response;
 
-  const { email, type } = validated;
+  const { body } = validated;
+
+  const email = body?.email as string | undefined;
+  if (!email) return formatJSONResponse({ statusCode: 400, origin: validated.origin, message: 'Missing required field: email' }) as APIGatewayProxyResult;
+
+  const type = body?.type as JabType | undefined;
+  if (!type || !validJabTypes.has(type)) return formatJSONResponse({ statusCode: 400, origin: validated.origin, message: 'Missing or invalid field: type' }) as APIGatewayProxyResult;
 
   try {
     await connectToAtlas();
-    const body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
     const created = await jabsService.subscribeToType({ ...body, email, type });
 
     if (!created) return formatJSONResponse({ statusCode: 500, origin: validated.origin, message: 'Failed to create jab subscription.' }) as APIGatewayProxyResult;
@@ -80,6 +80,7 @@ const subscribeHandler = async (event: LambdaEvent): Promise<APIGatewayProxyResu
 
 // ============================================================
 // PUT /jabs/unsubscribe
+// Accepts { token } — a signed token generated at email-send time.
 // ============================================================
 const unsubscribeHandler = async (event: LambdaEvent): Promise<APIGatewayProxyResult> => {
   const origin = event.headers?.origin || event.headers?.Origin || '';
@@ -87,14 +88,20 @@ const unsubscribeHandler = async (event: LambdaEvent): Promise<APIGatewayProxyRe
   const httpMethod = 'httpMethod' in event ? event.httpMethod : event.requestContext?.http?.method;
   if (httpMethod === 'OPTIONS') return formatJSONResponse({ statusCode: 200, origin, message: 'OK' }) as APIGatewayProxyResult;
 
-  const validated = validateRequest(event);
+  const validated = validateCloudFront(event);
   if (!validated.ok) return validated.response;
 
-  const { email, type } = validated;
+  const { body } = validated;
+
+  const token = body?.token as string | undefined;
+  if (!token) return formatJSONResponse({ statusCode: 400, origin: validated.origin, message: 'Missing required field: token' }) as APIGatewayProxyResult;
+
+  const payload = verifyUnsubscribeToken(token, UNSUBSCRIBE_SECRET);
+  if (!payload) return formatJSONResponse({ statusCode: 401, origin: validated.origin, message: 'Invalid or expired unsubscribe token' }) as APIGatewayProxyResult;
 
   try {
     await connectToAtlas();
-    await jabsService.unsubscribeFromType(email, type);
+    await jabsService.unsubscribeFromType(payload.email, payload.type);
 
     return formatJSONResponse({ statusCode: 200, origin: validated.origin, message: 'Unsubscribed!' }) as APIGatewayProxyResult;
   } catch (err) {

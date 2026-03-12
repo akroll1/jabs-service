@@ -7,6 +7,7 @@ export const Config = {
   FSL_DEV_MONGODB_URI: process.env.FSL_DEV_MONGODB_URI || "",
   CLOUDFRONT_SECRET: process.env.CLOUDFRONT_SECRET as string,
   SES_EMAIL_SOURCE: process.env.SES_EMAIL_SOURCE as string,
+  UNSUBSCRIBE_SECRET: process.env.UNSUBSCRIBE_SECRET as string,
 };
 
 // Required configs
@@ -18,3 +19,4 @@ if (!Config.FSL_PROD_MONGODB_URI) throw new Error("Warning: Please set FSL_PROD_
 if (!Config.FSL_DEV_MONGODB_URI) console.warn("Warning: FSL_DEV_MONGODB_URI is not set.");
 if (!Config.CLOUDFRONT_SECRET) throw new Error("Warning: Please set CLOUDFRONT_SECRET.");
 if (!Config.SES_EMAIL_SOURCE) throw new Error("Warning: Please set SES_EMAIL_SOURCE.");
+if (!Config.UNSUBSCRIBE_SECRET) throw new Error("Warning: Please set UNSUBSCRIBE_SECRET.");
