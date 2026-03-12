@@ -52,12 +52,11 @@ export const serverlessConfiguration: AWS = {
       concurrency: 10,
     },
     output: {
-        file: "./data.json",
-        stage: "v1",
-        "serverless-offline": {
-          "lambdaPort": 40888,
-        },
-        "chatService": "FSL-CHAT"
+      file: "./data.json",
+      stage: "v1",
+      "serverless-offline": {
+        "lambdaPort": 40888,
+      },
     }
   },
 };
