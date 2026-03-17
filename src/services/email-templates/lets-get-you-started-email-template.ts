@@ -1,4 +1,4 @@
-export const letsGetYouStartedEmailTemplate = (email: string) => {
+export const letsGetYouStartedEmailTemplate = (email: string, unsubscribeUrl: string) => {
   return `<!doctype html>
 <html lang="und" dir="auto" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -740,7 +740,7 @@ export const letsGetYouStartedEmailTemplate = (email: string) => {
                                   <tbody>
                                     <tr>
                                       <td align="center" bgcolor="transparent" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:transparent;" valign="middle">
-                                        <a href="https://fightsync.app/unsubscribe?id=${email}&source=WELCOME" style="display:inline-block;background:transparent;color:#999999;font-family:'Cabin', 'Helvetica', 'Arial', sans-serif;font-size:18px;font-weight:normal;line-height:120%;margin:0;text-decoration:underline;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;" target="_blank"> Unsubscribe </a>
+                                        <a href="${unsubscribeUrl}" style="display:inline-block;background:transparent;color:#999999;font-family:'Cabin', 'Helvetica', 'Arial', sans-serif;font-size:18px;font-weight:normal;line-height:120%;margin:0;text-decoration:underline;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;" target="_blank"> Unsubscribe </a>
                                       </td>
                                     </tr>
                                   </tbody>

@@ -1,4 +1,45 @@
 import serverless from 'serverless-http';
 import app from '@/app';
+import { connectToAtlas } from '@/libs/connect-to-atlas';
+import {
+  subscribeHandler,
+  internalUnsubscribeHandler,
+  welcomeHandler,
+  cornerInviteHandler,
+} from '@/controllers/jabs/jabs.controller';
 
-export const main = serverless(app);
+const serverlessHandler = serverless(app);
+
+type DirectRoute = '/jabs/subscribe' | '/jabs/unsubscribe' | '/jabs/welcome' | '/jabs/corner-invite';
+
+interface LambdaInvokePayload {
+  route: DirectRoute;
+  body: Record<string, any>;
+}
+
+type RouteHandler = (body: Record<string, any>) => Promise<{ statusCode: number; message: string }>;
+
+const routeHandlers: Record<DirectRoute, RouteHandler> = {
+  '/jabs/subscribe': subscribeHandler,
+  '/jabs/unsubscribe': internalUnsubscribeHandler,
+  '/jabs/welcome': welcomeHandler,
+  '/jabs/corner-invite': cornerInviteHandler,
+};
+
+async function handleDirectInvoke(event: LambdaInvokePayload) {
+  await connectToAtlas();
+
+  const handler = routeHandlers[event.route];
+
+  if (!handler) return { statusCode: 404, message: `Unknown route: ${event.route}` };
+
+  return handler(event.body ?? {});
+}
+
+export const main = async (event: any, context: any) => {
+  // Direct Lambda-to-Lambda invocation — no requestContext, no CloudFront secret required
+  if (!event.requestContext) return handleDirectInvoke(event as LambdaInvokePayload);
+
+  // HTTP event via API Gateway — goes through Express (CloudFront secret enforced)
+  return serverlessHandler(event, context);
+};

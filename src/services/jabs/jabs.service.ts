@@ -24,7 +24,7 @@ export class JabsService {
         return !!subscription;
     }
 
-    async unsubscribeFromType(email: string, type: JabType): Promise<void> {
+    async unsubscribeFromType(email: string, type: JabType): Promise<boolean> {
         if (type === JabType.ALL) {
             await JabsMongo.updateMany(
                 { email },
@@ -33,7 +33,7 @@ export class JabsService {
                     unsubscribedAt: new Date(),
                 }
             );
-            return;
+            return true;
         }
 
         await JabsMongo.findOneAndUpdate(
@@ -43,5 +43,6 @@ export class JabsService {
                 unsubscribedAt: new Date(),
             }
         );
+        return true;
     }
 }
