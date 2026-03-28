@@ -5,7 +5,13 @@ export const jabsService = {
   events: [
     {
       httpApi: {
-        method: 'ANY',
+        method: 'POST',
+        path: '/jabs/{proxy+}',
+      },
+    },
+    {
+      httpApi: {
+        method: 'DELETE',
         path: '/jabs/{proxy+}',
       },
     },

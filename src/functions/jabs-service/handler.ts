@@ -1,12 +1,7 @@
 import serverless from 'serverless-http';
 import app from '@/app';
 import { connectToAtlas } from '@/libs/connect-to-atlas';
-import {
-  subscribeHandler,
-  internalUnsubscribeHandler,
-  welcomeHandler,
-  cornerInviteHandler,
-} from '@/controllers/jabs/jabs.controller';
+import { cornerInviteHandler, internalUnsubscribeHandler, subscribeHandler, welcomeHandler } from '@/controllers/jabs/controller-handlers';
 
 const serverlessHandler = serverless(app);
 
@@ -37,6 +32,7 @@ async function handleDirectInvoke(event: LambdaInvokePayload) {
 }
 
 export const main = async (event: any, context: any) => {
+  // console.log('Received event:', JSON.stringify(event));
   // Direct Lambda-to-Lambda invocation — no requestContext, no CloudFront secret required
   if (!event.requestContext) return handleDirectInvoke(event as LambdaInvokePayload);
 

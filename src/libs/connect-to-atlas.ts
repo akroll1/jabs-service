@@ -9,11 +9,11 @@ interface MongooseCache {
 
 // 2. Initialize the global variable if it doesn't exist yet.
 // This prevents 'cached' from being undefined.
-let cached = (global as any).mongoose as MongooseCache;
+let cached = global.mongooseCache as MongooseCache;
 
 if (!cached) {
-  (global as any).mongoose = { conn: null, promise: null };
-  cached = (global as any).mongoose;
+  global.mongooseCache = { conn: null, promise: null };
+  cached = global.mongooseCache;
 }
 
 export const connectToAtlas = async () => {
@@ -37,10 +37,10 @@ export const connectToAtlas = async () => {
       // --- LAMBDA MODE ---
       options.authMechanism = "MONGODB-AWS";
       options.authSource = "$external";
-      connectionUri = Config.FSL_PROD_MONGODB_URI;
+      connectionUri = Config.FS_PROD_MONGODB_URI;
     } else {
       // --- LOCAL MODE ---
-      connectionUri = Config.FSL_DEV_MONGODB_URI;
+      connectionUri = Config.FS_DEV_MONGODB_URI;
     }
 
     mongoose.set("strictQuery", true);

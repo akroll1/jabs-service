@@ -1,15 +1,14 @@
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import { Config } from '../config';
 import jabsRouter from './controllers/jabs/jabs.controller';
 import { atlasConnectionMiddleware, cloudfrontSecretMiddleware, corsMiddleware } from './middlewares';
 
 const app = express();
 
+app.use(helmet());
 app.use(corsMiddleware);
 app.use(cloudfrontSecretMiddleware);
 app.use(express.json({ limit: "1mb" }));
-app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(atlasConnectionMiddleware)
 

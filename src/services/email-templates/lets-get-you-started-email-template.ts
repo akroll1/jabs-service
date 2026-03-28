@@ -799,160 +799,160 @@ export const letsGetYouStartedEmailTemplate = (email: string, unsubscribeUrl: st
 </html>`;
 };
 
-const mjml = `<mjml>
-    <mj-head>
-      <mj-style>
-      	.body-border {
-        	border: 5px solid #333 !important;
-      	}
-    </mj-style>
-      <mj-attributes>
-        <mj-all font-family="'Cabin', 'Helvetica', 'Arial', sans-serif"></mj-all>
-        <mj-text color="#515151"></mj-text>
-      </mj-attributes>
+// const mjml = `<mjml>
+//     <mj-head>
+//       <mj-style>
+//       	.body-border {
+//         	border: 5px solid #333 !important;
+//       	}
+//     </mj-style>
+//       <mj-attributes>
+//         <mj-all font-family="'Cabin', 'Helvetica', 'Arial', sans-serif"></mj-all>
+//         <mj-text color="#515151"></mj-text>
+//       </mj-attributes>
 
-      <mj-font href="https://fonts.googleapis.com/css?family=Cabin:normal,italic,bold&display=swap" name="Cabin"></mj-font>
-    </mj-head>
-    <mj-body background-color="#f8f8f8" css-class="body-border">
-      <mj-section background-color="#fff" border-top="2px solid #000" padding-bottom="10px" padding-left="24px" padding-right="24px" padding-top="48px">
-        <mj-column padding="0" width="100px">
-          <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1719953352/fsl_icon_no_bg_fr1tfv.png" width="100px"></mj-image>
-        </mj-column>
-			</mj-section>
-      <mj-section background-color="#fff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="0px" padding="48px">
-        <mj-column padding="0" padding-top="10px">
-           <mj-text font-weight="bold" color="#333" font-size="36px" align="center">FightSync</mj-text>
-        </mj-column>
-      </mj-section>
-      <mj-section background-color="#111" padding-bottom="48px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
-        <mj-column padding="0">
-          <mj-text color="#bbb" font-size="14px" line-height="1.6" padding="0px">
-            WELCOME TO FIGHTSYNC
-          </mj-text>
-          <mj-spacer height="12px"></mj-spacer>
-          <mj-text color="#ffffff" font-size="38px" line-height="1.375" padding="0px">
-            <strong>Let's get you <br />up and running smoothly</strong>
-          </mj-text>
-        </mj-column>
-        <mj-column padding="0">
-          <mj-image fluid-on-mobile="true" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1719947921/home_page_n0_bg_wticrg.png"></mj-image>
-        </mj-column>
-      </mj-section>
-      <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="48px" padding="48px">
-        <mj-column padding="0">
-          <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
-            Fantasy boxing is here! FightSync allows you to make fight predictions, create groups and compete together over a season of boxing.
-          </mj-text>
-        </mj-column>
-      </mj-section>
-      <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
-        <mj-column padding="0">
-          <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
-            <strong>The Latest Fight Info</strong>
-          </mj-text>
-          <mj-spacer height="4px"></mj-spacer>
-          <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
-						FightSync has the latest major fight info and up-to-the-minute results including how and where to watch fights and the latest odds.
-          </mj-text>
+//       <mj-font href="https://fonts.googleapis.com/css?family=Cabin:normal,italic,bold&display=swap" name="Cabin"></mj-font>
+//     </mj-head>
+//     <mj-body background-color="#f8f8f8" css-class="body-border">
+//       <mj-section background-color="#fff" border-top="2px solid #000" padding-bottom="10px" padding-left="24px" padding-right="24px" padding-top="48px">
+//         <mj-column padding="0" width="100px">
+//           <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1719953352/fsl_icon_no_bg_fr1tfv.png" width="100px"></mj-image>
+//         </mj-column>
+// 			</mj-section>
+//       <mj-section background-color="#fff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="0px" padding="48px">
+//         <mj-column padding="0" padding-top="10px">
+//            <mj-text font-weight="bold" color="#333" font-size="36px" align="center">FightSync</mj-text>
+//         </mj-column>
+//       </mj-section>
+//       <mj-section background-color="#111" padding-bottom="48px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
+//         <mj-column padding="0">
+//           <mj-text color="#bbb" font-size="14px" line-height="1.6" padding="0px">
+//             WELCOME TO FIGHTSYNC
+//           </mj-text>
+//           <mj-spacer height="12px"></mj-spacer>
+//           <mj-text color="#ffffff" font-size="38px" line-height="1.375" padding="0px">
+//             <strong>Let's get you <br />up and running smoothly</strong>
+//           </mj-text>
+//         </mj-column>
+//         <mj-column padding="0">
+//           <mj-image fluid-on-mobile="true" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1719947921/home_page_n0_bg_wticrg.png"></mj-image>
+//         </mj-column>
+//       </mj-section>
+//       <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="48px" padding="48px">
+//         <mj-column padding="0">
+//           <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
+//             Fantasy boxing is here! FightSync allows you to make fight predictions, create groups and compete together over a season of boxing.
+//           </mj-text>
+//         </mj-column>
+//       </mj-section>
+//       <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
+//         <mj-column padding="0">
+//           <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
+//             <strong>The Latest Fight Info</strong>
+//           </mj-text>
+//           <mj-spacer height="4px"></mj-spacer>
+//           <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
+// 						FightSync has the latest major fight info and up-to-the-minute results including how and where to watch fights and the latest odds.
+//           </mj-text>
 
-          <mj-button href="https://fightsync.app#fight_info?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=fight_info&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
-            <strong>Learn more</strong>
-          </mj-button>
-        </mj-column>
-        <mj-column padding="0">
-          <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759140/email_assets/introductory_email/latest_fight_info_no_bg_v7gjr0.png" width="110px"></mj-image>
-        </mj-column>
-      </mj-section>
+//           <mj-button href="https://fightsync.app#fight_info?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=fight_info&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
+//             <strong>Learn more</strong>
+//           </mj-button>
+//         </mj-column>
+//         <mj-column padding="0">
+//           <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759140/email_assets/introductory_email/latest_fight_info_no_bg_v7gjr0.png" width="110px"></mj-image>
+//         </mj-column>
+//       </mj-section>
 
-      <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
-        <mj-column padding="0">
-          <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759174/email_assets/introductory_email/real_time_analytics_no_bg_loimni.png" width="120px"></mj-image>
-        </mj-column>
-        <mj-column padding="0">
-          <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
-            <strong>Real-Time Analytics and Scoring</strong>
-          </mj-text>
-          <mj-spacer height="4px"></mj-spacer>
-          <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
-            Real-time fight analytics give you an insight into fights like never before! Score the fight as it happens and see how your scorecard compares to others.
-          </mj-text>
-          <mj-button href="https://fightsync.app#analytics?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=analytics&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
-            <strong>Learn more</strong>
-          </mj-button>
-        </mj-column>
-      </mj-section>
+//       <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
+//         <mj-column padding="0">
+//           <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759174/email_assets/introductory_email/real_time_analytics_no_bg_loimni.png" width="120px"></mj-image>
+//         </mj-column>
+//         <mj-column padding="0">
+//           <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
+//             <strong>Real-Time Analytics and Scoring</strong>
+//           </mj-text>
+//           <mj-spacer height="4px"></mj-spacer>
+//           <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
+//             Real-time fight analytics give you an insight into fights like never before! Score the fight as it happens and see how your scorecard compares to others.
+//           </mj-text>
+//           <mj-button href="https://fightsync.app#analytics?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=analytics&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
+//             <strong>Learn more</strong>
+//           </mj-button>
+//         </mj-column>
+//       </mj-section>
 
-      <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
-        <mj-column padding="0">
-          <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
-            <strong>Make Predictions</strong>
-          </mj-text>
-          <mj-spacer height="4px"></mj-spacer>
-          <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
-						Let AI help you make your fight predictions by choosing which fighter wins and how. Create a Corner and play against friends over a season.
-          </mj-text>
-          <mj-button href="https://fightsync.app#make_predictions?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=make_predictions&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
-            <strong>Learn more</strong>
-					</mj-button>
-        </mj-column>
-        <mj-column padding="0">
-          <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759142/email_assets/introductory_email/make_predictions_no_bg_r7pwuz.png" width="120px"></mj-image>
-        </mj-column>
-      </mj-section>
+//       <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
+//         <mj-column padding="0">
+//           <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
+//             <strong>Make Predictions</strong>
+//           </mj-text>
+//           <mj-spacer height="4px"></mj-spacer>
+//           <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
+// 						Let AI help you make your fight predictions by choosing which fighter wins and how. Create a Corner and play against friends over a season.
+//           </mj-text>
+//           <mj-button href="https://fightsync.app#make_predictions?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=make_predictions&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
+//             <strong>Learn more</strong>
+// 					</mj-button>
+//         </mj-column>
+//         <mj-column padding="0">
+//           <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759142/email_assets/introductory_email/make_predictions_no_bg_r7pwuz.png" width="120px"></mj-image>
+//         </mj-column>
+//       </mj-section>
 
-      <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
-        <mj-column padding="0">
-          <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759141/email_assets/introductory_email/create_a_corner_no_bg_wfeqhd.png" width="120px"></mj-image>
-        </mj-column>
-        <mj-column padding="0">
-          <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
-            <strong>Create a Corner</strong>
-          </mj-text>
-          <mj-spacer height="4px"></mj-spacer>
-          <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
-            Create a Corner and see all your corner's scores in real-time. Compete and play over a season together to find out who wears the belt in your corner.
-          </mj-text>
-          <mj-button href="https://fightsync.app#create_a_corner?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=create_a_corner&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
-            <strong>Learn more</strong>
-          </mj-button>
-        </mj-column>
-      </mj-section>
+//       <mj-section background-color="#ffffff" padding-bottom="24px" padding-left="48px" padding-right="48px" padding-top="24px" padding="48px">
+//         <mj-column padding="0">
+//           <mj-image align="center" padding="0px" src="https://res.cloudinary.com/dhen5jaym/image/upload/v1766759141/email_assets/introductory_email/create_a_corner_no_bg_wfeqhd.png" width="120px"></mj-image>
+//         </mj-column>
+//         <mj-column padding="0">
+//           <mj-text  align="center" color="#000000" font-size="22px" line-height="1.5" padding="0px">
+//             <strong>Create a Corner</strong>
+//           </mj-text>
+//           <mj-spacer height="4px"></mj-spacer>
+//           <mj-text  align="center" font-size="18px" line-height="1.5" padding="0px">
+//             Create a Corner and see all your corner's scores in real-time. Compete and play over a season together to find out who wears the belt in your corner.
+//           </mj-text>
+//           <mj-button href="https://fightsync.app#create_a_corner?utm_source=email&utm_medium=email&utm_campaign=welcome&utm_content=create_a_corner&email=${email}" background-color="transparent" color="#dd0c28" font-size="20px" line-height="1.5">
+//             <strong>Learn more</strong>
+//           </mj-button>
+//         </mj-column>
+//       </mj-section>
 
-      <mj-section background-color="#fff" padding-bottom="0px" padding-left="50px" padding-right="50px" padding-top="0px" padding="50px">
-      <mj-column padding="0">
+//       <mj-section background-color="#fff" padding-bottom="0px" padding-left="50px" padding-right="50px" padding-top="0px" padding="50px">
+//       <mj-column padding="0">
 
-      </mj-column>
-    </mj-section>
-    <mj-section background-color="#000" padding="20px" border-bottom="2px solid gray">
-      <mj-column padding="0">
-        <mj-spacer height="8px"></mj-spacer>
-        <mj-text align="center" color="#fff" font-size="24px" line-height="1.25" padding="0px">
-          <strong>FightSync</strong>
-        </mj-text>
-          <br />
-        <mj-text color="#ddd" align="center" font-size="18px"><strong>You be the Judge.</strong></mj-text>
+//       </mj-column>
+//     </mj-section>
+//     <mj-section background-color="#000" padding="20px" border-bottom="2px solid gray">
+//       <mj-column padding="0">
+//         <mj-spacer height="8px"></mj-spacer>
+//         <mj-text align="center" color="#fff" font-size="24px" line-height="1.25" padding="0px">
+//           <strong>FightSync</strong>
+//         </mj-text>
+//           <br />
+//         <mj-text color="#ddd" align="center" font-size="18px"><strong>You be the Judge.</strong></mj-text>
 
-        <mj-spacer height="16px"></mj-spacer>
-        <mj-text align="center" color="#888" font-size="14px" line-height="1.6" padding="0px">
-          If this email has been sent in error, you may disregard it or unsubscribe below.
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    <mj-section background-color="#000" border-bottom="2px solid #ffffff" border-top="none" padding-bottom="40px" padding-left="40px" padding-right="40px" padding-top="40px" padding="40px">
-      <mj-column padding="0">
+//         <mj-spacer height="16px"></mj-spacer>
+//         <mj-text align="center" color="#888" font-size="14px" line-height="1.6" padding="0px">
+//           If this email has been sent in error, you may disregard it or unsubscribe below.
+//         </mj-text>
+//       </mj-column>
+//     </mj-section>
+//     <mj-section background-color="#000" border-bottom="2px solid #ffffff" border-top="none" padding-bottom="40px" padding-left="40px" padding-right="40px" padding-top="40px" padding="40px">
+//       <mj-column padding="0">
 
-      <mj-spacer height="20px"></mj-spacer>
-      <mj-text color="#ddd" align="center" font-size="16px" line-height="1.5" padding="0px">
-        ${new Date().getFullYear()} FightSync &copy; All rights reserved.<br /><br />
-      </mj-text>
-      <mj-button font-size="18px" background-color="transparent" color="#999" text-decoration="underline" href="https://fightsync.app/unsubscribe?id=${email}&source=WELCOME">Unsubscribe</mj-button>
+//       <mj-spacer height="20px"></mj-spacer>
+//       <mj-text color="#ddd" align="center" font-size="16px" line-height="1.5" padding="0px">
+//         ${new Date().getFullYear()} FightSync &copy; All rights reserved.<br /><br />
+//       </mj-text>
+//       <mj-button font-size="18px" background-color="transparent" color="#999" text-decoration="underline" href="https://fightsync.app/unsubscribe?id=${email}&source=WELCOME">Unsubscribe</mj-button>
 
-    </mj-column>
-  </mj-section>
-    <mj-section padding="0px">
-      <mj-column padding="0">
-        <mj-spacer height="40px"></mj-spacer>
-      </mj-column>
-    </mj-section>
-    </mj-body>
-  </mjml>`;
+//     </mj-column>
+//   </mj-section>
+//     <mj-section padding="0px">
+//       <mj-column padding="0">
+//         <mj-spacer height="40px"></mj-spacer>
+//       </mj-column>
+//     </mj-section>
+//     </mj-body>
+//   </mjml>`;
