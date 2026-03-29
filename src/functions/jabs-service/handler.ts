@@ -14,7 +14,7 @@ interface LambdaInvokePayload {
 
 type RouteHandler = (body: Record<string, any>) => Promise<{ statusCode: number; message: string }>;
 
-const routeHandlers: Record<DirectRoute, RouteHandler> = {
+const routeHandlers: Record<DirectRoute, RouteHandler | ((body: any) => Promise<{ statusCode: number; message: string }>)> = {
   '/jabs/subscribe': subscribeHandler,
   '/jabs/unsubscribe': internalUnsubscribeHandler,
   '/jabs/welcome': welcomeHandler,

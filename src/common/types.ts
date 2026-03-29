@@ -13,3 +13,13 @@ export type JSONResponse = {
   origin?: string;
   message?: string;
 };
+
+export type YouAreInvitedToCorner = {
+  cornerId?: string;
+  cornerName?: string;
+  email: string;
+  managerName?: string;
+  seasonTitle?: string;
+  unsubscribeUrl?: string;
+};
+

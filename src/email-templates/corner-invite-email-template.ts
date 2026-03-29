@@ -1,12 +1,8 @@
-export interface CornerInviteTemplateOptions {
-  email: string;
-  cornerName: string;
-  inviterName?: string;
-  unsubscribeUrl?: string;
-}
+import { YouAreInvitedToCorner } from "@/common";
 
-export const cornerInviteEmailTemplate = ({ cornerName, inviterName, unsubscribeUrl }: CornerInviteTemplateOptions): string => {
-  const from = inviterName ? `${inviterName} has` : 'Someone has';
+
+export const cornerInviteEmailTemplate = ({ cornerName, managerName, unsubscribeUrl }: YouAreInvitedToCorner): string => {
+  const from = managerName ? `${managerName} has` : 'Someone has';
 
   return `<!doctype html>
 <html lang="en">
@@ -29,15 +25,13 @@ export const cornerInviteEmailTemplate = ({ cornerName, inviterName, unsubscribe
             <td style="padding:40px 32px;">
               <h2 style="color:#1a1a1a;margin:0 0 16px;">You're invited to join a Corner</h2>
               <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 24px;">
-                ${from} invited you to join <strong>${cornerName}</strong> on FightSync.
+                <strong>${from}</strong> invited you to join <strong>${cornerName}</strong> on FightSync.
               </p>
               <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 32px;">
-                FightSync helps fighters and their corners stay connected, track performance, and prepare for fight night.
-              </p>
-              <table cellpadding="0" cellspacing="0">
+                Don't just watch the fights—score them together. FightSync lets you and your crew judge the main event live and instantly share your cards the second the bell rings. <br /><br />Plus, every round you lock in feeds the global analytics. Watch the worldwide fan consensus shift round-by-round, and see how other fans are seeing the momentum shifts. Experience fight night like never before!              <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="background-color:#e63946;border-radius:4px;">
-                    <a href="https://fightsync.app" style="display:inline-block;padding:14px 28px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;">
+                    <a href="https://fightsync.app/dashboard/corners/invites?cornerName=${encodeURIComponent(cornerName || "")}&managerName=${encodeURIComponent(managerName || '')}  " style="display:inline-block;padding:14px 28px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;">
                       View Invitation
                     </a>
                   </td>

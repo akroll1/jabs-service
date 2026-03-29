@@ -1,4 +1,4 @@
-import { sendWelcomeEmailSES } from "@/services/jabs/ses.service";
+import { sendWelcomeEmailSES } from "@/services/ses";
 
 export async function welcomeHandler(body: Record<string, any>): Promise<{ statusCode: number; message: string }> {
   const { email } = body;
