@@ -1,5 +1,4 @@
-import { JabType, YouAreInvitedToCorner } from "@/common";
-import { JabsMongo } from "@/models/jabs";
+import { YouAreInvitedToCorner } from "@/common";
 import { sendCornerInviteEmailSES } from "@/services/ses";
 
 export async function cornerInviteHandler(body: YouAreInvitedToCorner): Promise<{ statusCode: number; message: string }> {

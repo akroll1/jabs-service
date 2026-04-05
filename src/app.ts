@@ -5,7 +5,7 @@ import { atlasConnectionMiddleware, cloudfrontSecretMiddleware, corsMiddleware }
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet()); 
 app.use(corsMiddleware);
 app.use(cloudfrontSecretMiddleware);
 app.use(express.json({ limit: "1mb" }));
