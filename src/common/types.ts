@@ -15,11 +15,12 @@ export type JSONResponse = {
 };
 
 export type YouAreInvitedToCorner = {
+  id?: string;
+  source?: JabType;
   cornerId?: string;
-  cornerName?: string;
+  cornerName: string;
   email: string;
-  managerName?: string;
+  managerName: string;
   seasonTitle?: string;
   unsubscribeUrl?: string;
 };
-

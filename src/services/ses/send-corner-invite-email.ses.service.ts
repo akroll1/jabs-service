@@ -5,12 +5,6 @@ import { JabType } from "src/common";
 import { Config } from "../../../config";
 import { YouAreInvitedToCorner } from "@/common";
 
-/**
- * This is the "Let's Get You Up and Running" email template.
- * */
-
-
-
 export const sendCornerInviteEmailSES = async (options: YouAreInvitedToCorner): Promise<void> => {
   console.log('OPTIONS: ', options);
   const sesClient = new SESClient({
