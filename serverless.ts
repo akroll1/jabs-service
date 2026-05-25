@@ -34,7 +34,7 @@ export const serverlessConfiguration: AWS = {
           "ses:SendEmail",
           "ses:SendRawEmail"
         ],
-        Resource: "arn:aws:ses:us-east-1:896748474789:identity/fightsync.app"
+        Resource: "${file:(.env.json):FS_SES_IDENTITY_ARN}"
       } 
     ],
   },
