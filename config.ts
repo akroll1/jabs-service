@@ -8,6 +8,7 @@ export const Config = {
   CLOUDFRONT_SECRET: process.env.CLOUDFRONT_SECRET as string,
   SES_EMAIL_SOURCE: process.env.SES_EMAIL_SOURCE as string,
   UNSUBSCRIBE_SECRET: process.env.UNSUBSCRIBE_SECRET as string,
+  FS_SES_IDENTITY_ARN: process.env.FS_SES_IDENTITY_ARN as string,
 };
 
 // Required configs
@@ -20,3 +21,4 @@ if (!Config.FS_DEV_MONGODB_URI) console.warn("Warning: Please set FS_DEV_MONGODB
 if (!Config.CLOUDFRONT_SECRET) throw new Error("Warning: Please set CLOUDFRONT_SECRET.");
 if (!Config.SES_EMAIL_SOURCE) throw new Error("Warning: Please set SES_EMAIL_SOURCE.");
 if (!Config.UNSUBSCRIBE_SECRET) throw new Error("Warning: Please set UNSUBSCRIBE_SECRET.");
+if (!Config.FS_SES_IDENTITY_ARN) throw new Error("Warning: Please set FS_SES_IDENTITY_ARN.");
