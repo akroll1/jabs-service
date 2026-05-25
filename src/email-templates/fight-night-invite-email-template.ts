@@ -22,9 +22,9 @@ export const fightNightInviteEmailTemplate = ({ inviteUrl }: FightNightInviteTem
           </tr>
           <tr>
             <td style="padding:40px 32px;">
-              <h2 style="color:#1a1a1a;margin:0 0 16px;">You're invited to Classic Fight Night!</h2>
+              <h2 style="color:#1a1a1a;margin:0 0 16px;">You're invited!</h2>
               <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 24px;">
-                You've been invited to <bold>Classic Fight Night!</bold> on FightSync.
+                You've been invited to <strong>Classic Fight Night!</strong> on FightSync.
               </p>
               <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 24px;">
                 Join us as we relive classic fights and score them together- live on the FightSync app! It's a great way to connect with friends and share your love of boxing.
