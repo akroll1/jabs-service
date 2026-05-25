@@ -1,7 +1,7 @@
 import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses";
 import { cornerInviteEmailTemplate } from "@/email-templates";
 import { generateUnsubscribeToken } from "src/libs/unsubscribe-token";
-import { JabType } from "src/common";
+import { JabType } from "@/common";
 import { Config } from "../../../config";
 import { YouAreInvitedToCorner } from "@/common";
 

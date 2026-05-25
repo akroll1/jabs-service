@@ -1,7 +1,6 @@
-import { YouAreInvitedToCorner } from "@/common";
 import { sendCornerInviteEmailSES } from "@/services/ses";
 
-export async function cornerInviteHandler(body: YouAreInvitedToCorner): Promise<{ statusCode: number; message: string }> {
+export async function cornerInviteHandler(body: Record<string, any>): Promise<{ statusCode: number; message: string }> {
   const { email, cornerName, managerName } = body;
 
   if (!email) return { statusCode: 400, message: 'Missing required field: email' };

@@ -1,11 +1,11 @@
 import serverless from 'serverless-http';
 import app from '@/app';
 import { connectToAtlas } from '@/libs/connect-to-atlas';
-import { cornerInviteHandler, internalUnsubscribeHandler, subscribeHandler, welcomeHandler } from '@/controllers/jabs/controller-handlers';
+import { cornerInviteHandler, fightNightInviteHandler, internalUnsubscribeHandler, subscribeHandler, welcomeHandler } from '@/controllers/jabs/controller-handlers';
 
 const serverlessHandler = serverless(app);
 
-type DirectRoute = '/jabs/subscribe' | '/jabs/unsubscribe' | '/jabs/welcome' | '/jabs/corner-invite';
+type DirectRoute = '/jabs/subscribe' | '/jabs/unsubscribe' | '/jabs/welcome' | '/jabs/corner-invite' | '/jabs/fight-night-invite';
 
 interface LambdaInvokePayload {
   route: DirectRoute;
@@ -14,11 +14,12 @@ interface LambdaInvokePayload {
 
 type RouteHandler = (body: Record<string, any>) => Promise<{ statusCode: number; message: string }>;
 
-const routeHandlers: Record<DirectRoute, RouteHandler | ((body: any) => Promise<{ statusCode: number; message: string }>)> = {
+const routeHandlers: Record<DirectRoute, RouteHandler> = {
   '/jabs/subscribe': subscribeHandler,
   '/jabs/unsubscribe': internalUnsubscribeHandler,
   '/jabs/welcome': welcomeHandler,
   '/jabs/corner-invite': cornerInviteHandler,
+  '/jabs/fight-night-invite': fightNightInviteHandler,
 };
 
 async function handleDirectInvoke(event: LambdaInvokePayload) {
