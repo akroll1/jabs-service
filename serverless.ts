@@ -26,6 +26,7 @@ export const serverlessConfiguration: AWS = {
       CLOUDFRONT_SECRET: "${file(.env.json):CLOUDFRONT_SECRET}",
       SES_EMAIL_SOURCE: "${file(.env.json):SES_EMAIL_SOURCE}",
       UNSUBSCRIBE_SECRET: "${file(.env.json):UNSUBSCRIBE_SECRET}",
+      FS_SES_IDENTITY_ARN: "${file(.env.json):FS_SES_IDENTITY_ARN}",
     },
     iamRoleStatements: [
       {
