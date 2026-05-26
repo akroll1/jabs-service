@@ -7,7 +7,7 @@ interface Recipient {
 
 export async function fightNightInviteHandler(body: any): Promise<{ statusCode: number; message: string }> {
   const recipients: Recipient[] = Array.isArray(body) ? body : [];
-
+  console.log('recipients:', recipients);
   if (recipients.length === 0) {
     return { statusCode: 400, message: 'Missing or invalid recipients array.' };
   }
