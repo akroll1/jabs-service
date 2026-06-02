@@ -1,3 +1,8 @@
+
+export enum GrantedVia {
+  HMAC_INVITE = "HMAC_INVITE",
+  CORNER = "CORNER",
+}
 export enum JabType {
   CORNER_INVITE = "CORNER_INVITE",
   FEEDBACK = "FEEDBACK",

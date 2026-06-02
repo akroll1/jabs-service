@@ -1,8 +1,13 @@
+import { GrantedVia } from "@/common/enums";
+
 export interface FightNightInviteTemplateOptions {
   inviteUrl: string;
+  source: GrantedVia;
 }
 
-export const fightNightInviteEmailTemplate = ({ inviteUrl }: FightNightInviteTemplateOptions): string => {
+export const fightNightInviteEmailTemplate = ({ inviteUrl, source }: FightNightInviteTemplateOptions): string => {
+  const isCorner = source === GrantedVia.CORNER;
+
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -26,17 +31,17 @@ export const fightNightInviteEmailTemplate = ({ inviteUrl }: FightNightInviteTem
               <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 24px;">
                 You've been invited to <strong>Classic Fight Night!</strong> on FightSync.
               </p>
-              <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 24px;">
+              <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 ${isCorner ? '32px' : '24px'};">
                 Join us as we relive classic fights and score them together- live on the FightSync app! It's a great way to connect with friends and share your love of boxing.
               </p>
-              <p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 32px;">
+              ${isCorner ? '' : `<p style="color:#555555;font-size:16px;line-height:1.6;margin:0 0 32px;">
                 Click the button below to accept your invitation.
-              </p>
+              </p>`}
               <table cellpadding="0" cellspacing="0">
                 <tr>
                   <td style="background-color:#e63946;border-radius:4px;">
                     <a href="${inviteUrl}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;">
-                      Accept Invitation
+                      ${isCorner ? 'View Fight Night' : 'Accept Invitation'}
                     </a>
                   </td>
                 </tr>

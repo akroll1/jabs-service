@@ -1,13 +1,14 @@
 import { SendEmailCommand, SESClient } from "@aws-sdk/client-ses";
+import { GrantedVia } from "@/common/enums";
 import { fightNightInviteEmailTemplate } from "@/email-templates";
 
-export const sendFightNightInviteEmailSES = async (email: string, inviteUrl: string): Promise<void> => {
+export const sendFightNightInviteEmailSES = async (email: string, inviteUrl: string, source: GrantedVia): Promise<void> => {
   const sesClient = new SESClient({
     region: process.env.AWS_REGION || "us-east-1",
   });
 
   const source = process.env.SES_EMAIL_SOURCE || "noreply@fightsync.app";
-  const htmlBody = fightNightInviteEmailTemplate({ inviteUrl });
+  const htmlBody = fightNightInviteEmailTemplate({ inviteUrl, source });
 
   const params = {
     Destination: {

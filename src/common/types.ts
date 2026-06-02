@@ -1,4 +1,17 @@
-import { JabType } from "./enums";
+import { GrantedVia, JabType } from "./enums";
+
+export type CreateInviteEmail = {
+  email: string;
+  inviteUrl: string;
+  managerName: string | null;
+  source: GrantedVia;
+};
+
+export type JSONResponse = {
+  statusCode?: number;
+  origin?: string;
+  message?: string;
+};
 
 export type UnsubscribeFromSourceOptions = {
     id: string;
@@ -6,12 +19,6 @@ export type UnsubscribeFromSourceOptions = {
     email?: string;
     campaignId?: string;
     cornerId?: string;
-};
-
-export type JSONResponse = {
-  statusCode?: number;
-  origin?: string;
-  message?: string;
 };
 
 export type YouAreInvitedToCorner = {
