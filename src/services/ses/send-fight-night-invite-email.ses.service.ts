@@ -7,7 +7,7 @@ export const sendFightNightInviteEmailSES = async (email: string, inviteUrl: str
     region: process.env.AWS_REGION || "us-east-1",
   });
 
-  const source = process.env.SES_EMAIL_SOURCE || "noreply@fightsync.app";
+  const fromAddress = process.env.SES_EMAIL_SOURCE || "noreply@fightsync.app";
   const htmlBody = fightNightInviteEmailTemplate({ inviteUrl, source });
 
   const params = {
@@ -26,7 +26,7 @@ export const sendFightNightInviteEmailSES = async (email: string, inviteUrl: str
         Data: "🥊 You're invited to Classic Fight Night! on FightSync",
       },
     },
-    Source: source,
+    Source: fromAddress,
   };
 
   try {
