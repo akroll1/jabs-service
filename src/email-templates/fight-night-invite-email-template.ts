@@ -41,7 +41,7 @@ export const fightNightInviteEmailTemplate = ({ inviteUrl, source }: FightNightI
                 <tr>
                   <td style="background-color:#e63946;border-radius:4px;">
                     <a href="${inviteUrl}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;">
-                      ${isCorner ? 'Go to Classic Fight Night!' : 'Accept Invitation'}
+                      <span style="color:#ffffff;">${isCorner ? 'View Classic Fight Night' : 'Accept Invitation'}</span>
                     </a>
                   </td>
                 </tr>
