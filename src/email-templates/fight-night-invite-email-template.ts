@@ -41,7 +41,7 @@ export const fightNightInviteEmailTemplate = ({ inviteUrl, source }: FightNightI
                 <tr>
                   <td style="background-color:#e63946;border-radius:4px;">
                     <a href="${inviteUrl}" style="display:inline-block;padding:14px 28px;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;">
-                      ${isCorner ? 'View Fight Night' : 'Accept Invitation'}
+                      ${isCorner ? 'Go to Classic Fight Night!' : 'Accept Invitation'}
                     </a>
                   </td>
                 </tr>
@@ -51,7 +51,7 @@ export const fightNightInviteEmailTemplate = ({ inviteUrl, source }: FightNightI
           <tr>
             <td style="padding:24px 32px;border-top:1px solid #eeeeee;">
               <p style="color:#999999;font-size:12px;margin:0;">
-                You received this email because you were invited to a FightSync Fight Night event.
+                You received this email because you were invited to a FightSync Classic Fight Night event.
                 If you didn't expect this, you can safely ignore it.
               </p>
             </td>
