@@ -4,3 +4,4 @@ export * from './internal-unsubscribe-handler';
 export * from './welcome-handler';
 export * from './corner-invite-handler';
 export * from './fight-night-invite-handler';
+export * from './feedback-handler';

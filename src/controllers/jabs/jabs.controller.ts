@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { subscribeHandler, unsubscribeHandler } from './controller-handlers';
+import { feedbackHandler, subscribeHandler, unsubscribeHandler } from './controller-handlers';
 
 const jabsRouter = Router();
 
@@ -16,6 +16,12 @@ jabsRouter.post('/subscribe', async (req: Request, res: Response) => {
 // DELETE /jabs/unsubscribe
 jabsRouter.delete('/unsubscribe', async (req: Request, res: Response) => {
   const result = await unsubscribeHandler(req.body ?? {});
+  return res.status(result.statusCode).json({ message: result.message });
+});
+
+// POST /jabs/feedback
+jabsRouter.post('/feedback', async (req: Request, res: Response) => {
+  const result = await feedbackHandler(req.body ?? {});
   return res.status(result.statusCode).json({ message: result.message });
 });
 

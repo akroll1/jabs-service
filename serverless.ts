@@ -25,6 +25,7 @@ export const serverlessConfiguration: AWS = {
       FS_PROD_MONGODB_URI: "${file(.env.json):FS_PROD_MONGODB_URI}",
       CLOUDFRONT_SECRET: "${file(.env.json):CLOUDFRONT_SECRET}",
       SES_EMAIL_SOURCE: "${file(.env.json):SES_EMAIL_SOURCE}",
+      FEEDBACK_NOTIFY_EMAIL: "${file(.env.json):FEEDBACK_NOTIFY_EMAIL}",
       UNSUBSCRIBE_SECRET: "${file(.env.json):UNSUBSCRIBE_SECRET}",
       FS_SES_IDENTITY_ARN: "${file(.env.json):FS_SES_IDENTITY_ARN}",
     },
