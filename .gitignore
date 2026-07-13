@@ -35,5 +35,3 @@ yarn-debug.log*
 yarn-error.log*
 
 set-dev-env.sh
-
-service-account-key.json
