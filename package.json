@@ -13,7 +13,6 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.1086.0",
     "@aws-sdk/client-ses": "^3.975.0",
     "@middy/core": "^7.1.1",
     "@middy/do-not-wait-for-empty-event-loop": "^7.0.2",
@@ -25,8 +24,8 @@
     "class-validator": "^0.14.3",
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "firebase-admin": "^13.6.1",
     "helmet": "^8.1.0",
+    "jose": "^6.2.3",
     "mongodb": "^7.0.0",
     "mongoose": "^9.1.5"
   },

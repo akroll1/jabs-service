@@ -28,7 +28,6 @@ export const serverlessConfiguration: AWS = {
       FEEDBACK_NOTIFY_EMAIL: "${file(.env.json):FEEDBACK_NOTIFY_EMAIL}",
       UNSUBSCRIBE_SECRET: "${file(.env.json):UNSUBSCRIBE_SECRET}",
       FS_SES_IDENTITY_ARN: "${file(.env.json):FS_SES_IDENTITY_ARN}",
-      FIREBASE_SERVICE_ACCOUNT_SECRET_ARN: "${file(.env.json):FIREBASE_SERVICE_ACCOUNT_SECRET_ARN}",
     },
     iamRoleStatements: [
       {
@@ -38,13 +37,6 @@ export const serverlessConfiguration: AWS = {
           "ses:SendRawEmail"
         ],
         Resource: "${file(.env.json):FS_SES_IDENTITY_ARN}"
-      },
-      {
-        Effect: "Allow",
-        Action: [
-          "secretsmanager:GetSecretValue"
-        ],
-        Resource: "${file(.env.json):FIREBASE_SERVICE_ACCOUNT_SECRET_ARN}"
       }
     ],
   },
