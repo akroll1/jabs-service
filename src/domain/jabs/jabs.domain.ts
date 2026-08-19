@@ -2,12 +2,12 @@ import {
     IsBoolean,
   IsDate,
   IsEmail,
-  IsEnum,
+  IsIn,
   IsOptional,
   IsString,
   validate,
 } from "class-validator";
-import { JabType } from "src/common/enums";
+import { JabType, SUBSCRIBABLE_JAB_TYPES } from "src/common/enums";
 
 export type IJab = Pick<
   Jab,
@@ -47,7 +47,8 @@ export class Jab implements IJab {
     @IsEmail()
     email: string;
 
-    @IsEnum(JabType)
+    // ALL is an unsubscribe-only sentinel and is never a stored jab type
+    @IsIn(SUBSCRIBABLE_JAB_TYPES)
     type: JabType;
 
     @IsBoolean()

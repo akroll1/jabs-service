@@ -1,8 +1,9 @@
-import { JabType } from "@/common";
+import { SUBSCRIBABLE_JAB_TYPES } from "@/common";
 import { JabsService } from '@/services/jabs/jabs.service';
 
 const jabsService = new JabsService();
-const validJabTypes = new Set(Object.values(JabType));
+// ALL is an unsubscribe-only sentinel, so it is not subscribable
+const validJabTypes = new Set<string>(SUBSCRIBABLE_JAB_TYPES);
 
 export async function subscribeHandler(body: Record<string, any>): Promise<{ statusCode: number; message: string }> {
   const { email, type, ...rest } = body;

@@ -1,7 +1,4 @@
 export const Config = {
-  FS_AWS_ACCESS_KEY_ID: process.env.FS_AWS_ACCESS_KEY_ID as string,
-  FS_AWS_SECRET_KEY: process.env.FS_AWS_SECRET_KEY as string,
-  FS_AWS_REGION: process.env.FS_AWS_REGION as string,
   FIREBASE_JWT_ISS: process.env.FIREBASE_JWT_ISS as string,
   FS_PROD_MONGODB_URI: process.env.FS_PROD_MONGODB_URI as string,
   FS_DEV_MONGODB_URI: process.env.FS_DEV_MONGODB_URI || "",
@@ -13,9 +10,6 @@ export const Config = {
 };
 
 // Required configs
-if (!Config.FS_AWS_ACCESS_KEY_ID) throw new Error("Warning: Please set AWS_ACCESS_KEY_ID.");
-if (!Config.FS_AWS_SECRET_KEY) throw new Error("Warning: Please set AWS_SECRET_KEY.");
-if (!Config.FS_AWS_REGION) throw new Error("Warning: Please set AWS_REGION.");
 if (!Config.FIREBASE_JWT_ISS) throw new Error("Warning: Please set FIREBASE_JWT_ISS.");
 if (!Config.FS_PROD_MONGODB_URI) throw new Error("Warning: Please set FS_PROD_MONGODB_URI");
 if (!Config.FS_DEV_MONGODB_URI) console.warn("Warning: Please set FS_DEV_MONGODB_URI.");

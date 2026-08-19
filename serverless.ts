@@ -17,9 +17,8 @@ export const serverlessConfiguration: AWS = {
       NODE_ENV: "production",
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
-      FS_AWS_ACCESS_KEY_ID: "${file(.env.json):FS_AWS_ACCESS_KEY_ID}",
-      FS_AWS_SECRET_KEY: "${file(.env.json):FS_AWS_SECRET_KEY}",
-      FS_AWS_REGION: "${file(.env.json):FS_AWS_REGION}",
+      // No AWS credentials here: Lambda injects credentials for the execution
+      // role into the container and the SDK's default chain picks them up.
       FIREBASE_JWT_ISS: "${file(.env.json):FIREBASE_JWT_ISS}",
       FS_DEV_MONGODB_URI: "${file(.env.json):FS_DEV_MONGODB_URI}",
       FS_PROD_MONGODB_URI: "${file(.env.json):FS_PROD_MONGODB_URI}",

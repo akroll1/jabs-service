@@ -12,6 +12,9 @@ export enum GrantedVia {
   CORNER = "CORNER",
 }
 export enum JabType {
+  // Sentinel used only when unsubscribing: means "every type for this email".
+  // Never persisted as a subscription row — see SUBSCRIBABLE_JAB_TYPES.
+  ALL = "ALL",
   CORNER_INVITE = "CORNER_INVITE",
   FEEDBACK = "FEEDBACK",
   FIGHT_NIGHT_INVITE = "FIGHT_NIGHT_INVITE",
@@ -20,3 +23,11 @@ export enum JabType {
   WEEKLY_FIGHTS_UPDATE = "WEEKLY_FIGHTS_UPDATE",
   WELCOME = "WELCOME",
 }
+
+/**
+ * The JabTypes a subscription row may actually hold. Excludes the ALL
+ * sentinel, which is an unsubscribe-only instruction rather than a real type.
+ */
+export const SUBSCRIBABLE_JAB_TYPES: JabType[] = Object.values(JabType).filter(
+  (type) => type !== JabType.ALL
+);

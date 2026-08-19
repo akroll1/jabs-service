@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { IJab } from "src/domain/jabs";
-import { JabType } from "src/common";
+import { SUBSCRIBABLE_JAB_TYPES } from "src/common";
 
 export const JabSchema = new mongoose.Schema(
   {
@@ -14,7 +14,7 @@ export const JabSchema = new mongoose.Schema(
     type: { 
       type: String, 
       required: true,
-      enum: Object.values(JabType), // VALIDATION: Only allows values from your Enum
+      enum: SUBSCRIBABLE_JAB_TYPES, // VALIDATION: real types only; the ALL sentinel is never stored
     },
     canContact: { 
       type: Boolean, 

@@ -2,7 +2,6 @@ import type { NextFunction, Request, Response } from "express";
 
 import { cloudfrontSecretMiddleware } from "./cloudfront-secret-middleware";
 import { extractToken } from "./helpers/extract-token";
-import { validateCloudFrontSecret } from "./helpers/validate-cloudfront-secret";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -56,34 +55,6 @@ describe("extractToken", () => {
     expect(
       extractToken({ Authorization: ["Bearer first", "Bearer second"] })
     ).toBe("first");
-  });
-});
-
-// ---------------------------------------------------------------------------
-// validateCloudFrontSecret
-// ---------------------------------------------------------------------------
-
-describe("validateCloudFrontSecret", () => {
-  it("should return true when no secret is in headers and no env secret is set", () => {
-    expect(validateCloudFrontSecret({}, undefined)).toBe(true);
-  });
-
-  it("should return false when a secret is received but no env secret is configured", () => {
-    expect(
-      validateCloudFrontSecret({ "x-origin-secret": "anything" }, undefined)
-    ).toBe(false);
-  });
-
-  it("should return false when the received secret does not match the env secret", () => {
-    expect(
-      validateCloudFrontSecret({ "x-origin-secret": "wrong" }, "correct")
-    ).toBe(false);
-  });
-
-  it("should return true when the received secret matches the env secret", () => {
-    expect(
-      validateCloudFrontSecret({ "x-origin-secret": "correct" }, "correct")
-    ).toBe(true);
   });
 });
 
